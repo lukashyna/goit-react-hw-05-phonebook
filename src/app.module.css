@@ -2,28 +2,6 @@
   max-width: 600px;
   margin: 0 auto;
 }
-.phonebook {
-  font-size: 36px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: 700;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #1f2eb4;
-  animation-duration: 500ms;
-  animation-name: slidein;
-}
-
-@keyframes slidein {
-  from {
-    margin-left: -500px;
-    width: 300%;
-  }
-
-  to {
-    margin-left: 0px;
-    width: 100%;
-  }
-}
 
 .contactForm {
   margin-bottom: 20px;

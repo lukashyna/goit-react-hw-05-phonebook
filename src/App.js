@@ -5,6 +5,7 @@ import ContactFilter from './components/contactFilter/contactFilter';
 import ContactList from './components/contactList/contactList';
 import styles from './app.module.css';
 import Alert from './components/alert/alert';
+import Logo from './components/logo/logo';
 
 export default class App extends Component {
   state = {
@@ -17,7 +18,14 @@ export default class App extends Component {
     filter: '',
     isAlert: false,
     alertMessage: '',
+    isMounted: false,
   };
+
+  componentDidMount() {
+    this.setState({
+      isMounted: true,
+    });
+  }
 
   addContact = ({ name, number }) => {
     const contact = {
@@ -78,12 +86,12 @@ export default class App extends Component {
   };
 
   render() {
-    const { contacts, filter, isAlert, alertMessage } = this.state;
+    const { contacts, filter, isAlert, alertMessage, isMounted } = this.state;
 
     return (
       <div className={styles.container}>
         <div className={styles.contactForm}>
-          <h1 className={styles.phonebook}>Phonebook</h1>
+          <Logo title="Phonebook" isMounted={isMounted} />
           <ContactForm onAddContact={this.addContact} />
         </div>
         <div>
@@ -93,7 +101,7 @@ export default class App extends Component {
               <ContactList contacts={this.filterContact()} removeContact={this.removeContact} />
             </div>
           )}
-          {isAlert && <Alert message={alertMessage} />}
+          {isAlert && <Alert message={alertMessage} isAlert={isAlert} />}
         </div>
       </div>
     );
